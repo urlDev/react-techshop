@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './NavTop.scss';
 
@@ -11,17 +12,19 @@ class NavTop extends Component {
 					<Image src={require('./logo_transparent.png')} />
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav">
-					<i class="fas fa-bars" />
+					<i className="fas fa-bars" />
 				</Navbar.Toggle>
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto mr-5 ">
 						<Nav.Link href="#home" className="pr-5">
-							Home
+							<Link to="/">Home</Link>
 						</Nav.Link>
-						<Nav.Link href="#features" className="pr-5">
-							Sign In
+						<Nav.Link href="#signin" className="pr-5">
+							<Link to="/signin">Sign In</Link>
 						</Nav.Link>
-						<Nav.Link href="#pricing">Cart</Nav.Link>
+						<Nav.Link href="#cart">
+							<Link to="/cart">Cart</Link>
+						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
