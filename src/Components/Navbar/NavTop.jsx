@@ -8,7 +8,7 @@ class NavTop extends Component {
 	render() {
 		return (
 			<Navbar default collapseOnSelect expand="lg" bg="dark" variant="dark">
-				<Navbar.Brand href="#home">
+				<Navbar.Brand as={Link} to="/">
 					<Image src={require('./logo_transparent.png')} />
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -16,15 +16,13 @@ class NavTop extends Component {
 				</Navbar.Toggle>
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto mr-5 ">
-						<Nav.Link href="#home" className="pr-5">
-							<Link to="/">Home</Link>
-						</Nav.Link>
-						<Nav.Link href="#signin" className="pr-5">
-							<Link to="/signin">Sign In</Link>
-						</Nav.Link>
-						<Nav.Link href="#cart">
-							<Link to="/cart">Cart</Link>
-						</Nav.Link>
+						<Link to="/" className="nav-link pr-5">
+							Home
+						</Link>
+						<Link  to="/signin" className="nav-link pr-5">
+							Sign In
+						</Link>
+						<Link to="/cart" className="nav-link">Cart</Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
