@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
-import storeProducts from './Data/data.js';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
+import { Container, Row } from 'react-bootstrap';
 import Product from "../Product/Product";
+
 
 import './ShopItems.scss';
 
-const { id, title, img, price, company, info } = storeProducts;
+
 
 class ShopItems extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			products: storeProducts
-		};
-	}
-
+	
+	
 	
 
 	render() {
@@ -41,7 +36,7 @@ class ShopItems extends Component {
 							</Col>
 						);
 					})} */}
-					{this.state.products.map((product) => {
+					{this.props.products.map((product) => {
 						return (
 							<Product key={product.id} products={product} ></Product>
 						);

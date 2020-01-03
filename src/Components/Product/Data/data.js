@@ -3,7 +3,7 @@ https://www.iconfinder.com/icons/1243689/call_phone_icon
 Creative Commons (Attribution 3.0 Unported);
 https://www.iconfinder.com/Makoto_msk */
 
-const storeProducts = [{
+export const storeProducts = [{
         id: 1,
         title: "Google Pixel - Black",
         img: "./img/product-1.png",
@@ -105,4 +105,4 @@ export const detailProduct = {
     total: 0
 };
 
-export default storeProducts;
+// export default storeProducts;
