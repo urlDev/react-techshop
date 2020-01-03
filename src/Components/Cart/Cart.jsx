@@ -4,10 +4,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import "./Cart.scss";
 
 class Cart extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  };
-    }
+   
     render() {
         return (
             <div className="cartWrap">
@@ -19,7 +16,7 @@ class Cart extends Component {
                             </h1>
                             <hr/>
                             <h1>
-                            Content
+                            {this.props.products.title}
                             </h1>
                             <hr/>
                             <Button className="buttonCart">Checkout</Button>

@@ -7,14 +7,12 @@ class Details extends Component {
 
 	render() { 
 
-		const { id, title, img, price, company, info } = this.props.detailed;
 		return (
 			<div>
 				<Container>
 					<Row>
 						<Col >
-                            Model: {title}
-                            
+                           <h1>hello from details</h1>
 						</Col>
 					</Row>
 				</Container>
