@@ -28,7 +28,9 @@ class Product extends Component {
 						<Card.Text>
 							
 							<h3 className="float-left">{`${price}$`}</h3>
+							{/* if inCart(boolean value in data) is true, then make the button disabled*/}
 							<Button onClick={this.handleClick} className="float-right" disabled={inCart ? true : false}>
+							{/* if in cart is True, write in cart, if not, make it font awesome icon */}
 								{inCart ? ( <p className="mb-0" disabled>In Cart</p> ) : (<i className="fas fa-cart-plus" />)}
 							</Button>
 							

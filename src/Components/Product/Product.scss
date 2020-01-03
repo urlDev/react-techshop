@@ -4,3 +4,15 @@
         border-color: #00264e;
     }
 }
+
+// overflow hidden will make the img scale up in hover but stay inside the card anchor container
+.card a {
+    overflow: hidden;
+}
+
+.card-img-top {
+    transition: all 0.5s ease-in-out;
+    &:hover {
+        transform: scale(1.5) rotate(-15deg);
+    }
+}
