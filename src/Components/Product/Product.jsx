@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Card, Button } from 'react-bootstrap';
-import Details from '../Details/Details';
 import { ProductConsumer } from '../../Context';
 import './Product.scss';
 
@@ -11,7 +10,8 @@ class Product extends Component {
 	render() {
 		// product because we set it like that in shopItems
 		// like product={product}, thats why
-		const { id, title, price, img, inCart } = this.props.product;
+		// props because product is children of shopitems component where we mapped all the items
+		const { id, title, price, inCart } = this.props.product;
 		return (
 			<Col key={id} className="vis m-5 p-0">
 				<ProductConsumer>

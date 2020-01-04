@@ -19,7 +19,7 @@ class Details extends Component {
 							<Row>
 								<Col>
 									<Card>
-										<a>
+										<a href="#">
 											<Card.Img
 												variant="top"
 												src={require(`../Product/Data/img/product-${id}.png`)}
@@ -40,7 +40,7 @@ class Details extends Component {
 												Back To Products
 											</Button>
 										</Link>
-										<Link to="/cart">
+										<Link >
 											<Button
 												variant="outline-warning"
 												className="p-2"

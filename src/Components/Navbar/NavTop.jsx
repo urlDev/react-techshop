@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import { ProductConsumer } from '../../Context';
 import './NavTop.scss';
 
 class NavTop extends Component {
@@ -19,10 +19,15 @@ class NavTop extends Component {
 						<Link to="/" className="nav-link pr-5">
 							Home
 						</Link>
-						<Link  to="/signin" className="nav-link pr-5">
+						<Link to="/signin" className="nav-link pr-5">
 							Sign In
 						</Link>
-						<Link to="/cart" className="nav-link">Cart</Link>
+						
+							<Link to="/cart" className="nav-link">
+								Cart
+							</Link>
+							
+						
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
