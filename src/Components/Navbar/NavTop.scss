@@ -24,3 +24,36 @@ $navbar-color: #F0F0F0;
 .nav-link {
     color: $navbar-color !important;
 }
+
+.shake {
+    position: relative;
+    left: 0;
+    animation: shake 1s linear;
+}
+
+@keyframes shake {
+    0% {
+        left: 0
+    }
+    10% {
+        left: -7px
+    }
+    20% {
+        left: 9px
+    }
+    30% {
+        left: -11px
+    }
+    40% {
+        left: 12px
+    }
+    50% {
+        left: -9px
+    }
+    60% {
+        left: 7px
+    }
+    100% {
+        left: 0
+    }
+}
