@@ -6,9 +6,7 @@ import { ProductConsumer } from '../../Context';
 import './Product.scss';
 
 class Product extends Component {
-	handleClick = () => {
-		console.log('added to the cart');
-	};
+	
 
 	render() {
 		// product because we set it like that in shopItems
@@ -16,27 +14,43 @@ class Product extends Component {
 		const { id, title, price, img, inCart } = this.props.product;
 		return (
 			<Col key={id} className="vis m-5 p-0">
-				<Card>
-					<Link variant="outline-info" to="/details">
-						<Card.Img variant="top" src={require(`../Product/Data/img/product-${id}.png`)} alt={title} />
-					</Link>
-					<Card.Body>
-						<Card.Title>
-							
-							<h2>{title}</h2>
-						</Card.Title>
-						<Card.Text>
-							
-							<h3 className="float-left">{`${price}$`}</h3>
-							{/* if inCart(boolean value in data) is true, then make the button disabled*/}
-							<Button onClick={this.handleClick} className="float-right" disabled={inCart ? true : false}>
-							{/* if in cart is True, write in cart, if not, make it font awesome icon */}
-								{inCart ? ( <p className="mb-0" disabled>In Cart</p> ) : (<i className="fas fa-cart-plus" />)}
-							</Button>
-							
-						</Card.Text>
-					</Card.Body>
-				</Card>
+				<ProductConsumer>
+					{(value) => (
+						<Card className="productCard" onClick={() => value.handleDetail(id)}>
+							<Link variant="outline-info" to="/details">
+								<Card.Img
+									variant="top"
+									src={require(`../Product/Data/img/product-${id}.png`)}
+									alt={title}
+									
+								/>
+							</Link>
+							<Card.Body>
+								<Card.Title>
+									<h2>{title}</h2>
+								</Card.Title>
+								<div>
+									<h3 className="float-left">{`${price}$`}</h3>
+									{/* if inCart(boolean value in data) is true, then make the button disabled*/}
+									<Button
+										className="float-right"
+										disabled={inCart ? true : false}
+										onClick={() => value.addToCart(id)}
+									>
+										{/* if in cart is True, write in cart, if not, make it font awesome icon */}
+										{inCart ? (
+											<p className="mb-0" disabled>
+												In Cart
+											</p>
+										) : (
+											<i className="fas fa-cart-plus" />
+										)}
+									</Button>
+								</div>
+							</Card.Body>
+						</Card>
+					)}
+				</ProductConsumer>
 			</Col>
 		);
 	}
