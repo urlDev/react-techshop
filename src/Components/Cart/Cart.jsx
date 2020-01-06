@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
 import { ProductConsumer } from '../../Context';
 import CartColumns from './CartColumns';
 import EmptyCart from './EmptyCart';
