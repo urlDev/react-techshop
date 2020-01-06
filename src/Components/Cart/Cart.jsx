@@ -3,7 +3,8 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { ProductConsumer } from '../../Context';
 import CartColumns from './CartColumns';
 import EmptyCart from './EmptyCart';
-import CartItems from "./CartItems";
+import CartItems from './CartItems';
+import CartTotal from "./CartTotal"
 import './Cart.scss';
 
 class Cart extends Component {
@@ -15,9 +16,12 @@ class Cart extends Component {
 					if (cart.length > 0) {
 						return (
 							<React.Fragment>
-								<div className="title"><h1>Cart</h1></div>
+								<div className="title">
+									<h1>Cart</h1>
+								</div>
 								<CartColumns />
-								<CartItems/>
+								<CartItems />
+								<CartTotal/>
 							</React.Fragment>
 						);
 					} else {

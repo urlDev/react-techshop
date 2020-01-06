@@ -15,8 +15,7 @@ class ProductProvider extends Component {
 			products: [],
 			detailProduct: detailProduct,
 			cart: [],
-			cartSubTotal: 0,
-			cartTax: 0,
+			cartCountTotal: 0,
 			cartTotal: 0
 		};
 	}
@@ -83,7 +82,9 @@ class ProductProvider extends Component {
 				};
 				// callback function to get state after we setstate
 			},
-			() => console.log(this.state)
+			() => {
+				this.addTotals();
+			}
 		);
 	};
 
@@ -96,12 +97,15 @@ class ProductProvider extends Component {
 		const product = tempCart[index];
 		product.count = product.count + 1;
 		product.total = product.count * product.price;
-        
-        this.setState({
-            cart:[ ...tempCart]
-        })
-        
-        console.log(product.count)
+
+		this.setState(
+			() => {
+			 return	{cart: [ ...tempCart ]};
+			},
+			() => {
+				this.addTotals();
+			}
+		);
 	};
 
 	decrement = (id) => {
@@ -116,18 +120,63 @@ class ProductProvider extends Component {
 			product.total = product.count * product.price;
 		}
 
-        this.setState({
-            cart:[ ...tempCart]
-        })
-        console.log(selectedProduct, index, product)
+		this.setState(
+			() => {
+				return {cart: [ ...tempCart ]} ;
+			},
+			() => {
+				this.addTotals();
+			}
+		);
 	};
 
 	remove = (id) => {
-		console.log("removed")
+		let tempProducts = [ ...this.state.products ];
+		let tempCart = [ ...this.state.cart ];
+
+		tempCart = tempCart.filter((i) => i.id !== id);
+
+		const index = tempProducts.indexOf(this.getItem(id));
+		let removedProduct = tempProducts[index];
+		removedProduct.inCart = false;
+		removedProduct.count = 0;
+		removedProduct.total = 0;
+		console.log('working');
+
+		this.setState(
+			() => {
+				return {
+					cart: [ ...tempCart ],
+					products: [ ...tempProducts ]
+				};
+			},
+			() => {
+				this.addTotals();
+			}
+		);
 	};
 
 	clearCart = () => {
-		console.log('cart was cleared');
+		this.setState(
+			() => {
+				return {cart: []} ;
+			},
+			() => {
+				this.setProducts();
+				this.addTotals();
+			}
+		);
+	};
+
+	addTotals = () => {
+		let cartTotal = 0;
+		let cartCountTotal = 0;
+		this.state.cart.map((i) => (cartTotal += i.total));
+		this.state.cart.map((i) => (cartCountTotal += i.count));
+		this.setState({
+			cartTotal: cartTotal,
+			cartCountTotal: cartCountTotal
+		});
 	};
 
 	render() {

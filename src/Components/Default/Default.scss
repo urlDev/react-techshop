@@ -1,0 +1,19 @@
+.default {
+    h1 {
+        position: relative;
+        top: 50vh;
+    }
+    img {
+        width: 50vw;
+        border-radius: 1em;
+    }
+    a {
+        font-size: 1em;
+        color: #F34B59;
+        transition: all 0.5s linear;
+        &:hover {
+            text-decoration: none;
+            color: rgb(194, 19, 34);
+        }
+    }
+}

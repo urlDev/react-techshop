@@ -40,7 +40,6 @@ class Details extends Component {
 												Back To Products
 											</Button>
 										</Link>
-										<Link >
 											<Button
 												variant="outline-warning"
 												className="p-2"
@@ -57,7 +56,6 @@ class Details extends Component {
 													<h5 className="mb-0">Add To Cart</h5>
 												)}
 											</Button>
-										</Link>
 									</Col>
 								</Col>
 							</Row>

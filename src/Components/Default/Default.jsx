@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import "./Default.scss";
 
 class Default extends Component {
@@ -8,8 +8,9 @@ class Default extends Component {
         return (
             <Container>
                 <Row>
-                    <Col>
-                        <h1>Page Not Found</h1>
+                    <Col className="default">
+                        <h1 className="text-light">Broken phone, or link. <Link  variant="light"  to="/">Back to products?</Link></h1>
+                        <img src={require("./pagenotfound.jpg")} alt="broken phone"/>
                     </Col>
                 </Row>
             </Container>
