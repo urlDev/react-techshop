@@ -6,4 +6,18 @@
     img {
         width: 5em;
     }
+    .text {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 30%);
+        width: 1em;
+    }
+    .fa-angle-left {
+        margin-top: 1em;
+    }
+    .fa-angle-right {
+        margin-top: -0.6em;
+    }
 }

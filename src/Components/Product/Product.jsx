@@ -22,7 +22,6 @@ class Product extends Component {
 									variant="top"
 									src={require(`../Product/Data/img/product-${id}.png`)}
 									alt={title}
-									
 								/>
 							</Link>
 							<Card.Body>
