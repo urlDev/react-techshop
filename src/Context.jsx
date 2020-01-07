@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { storeProducts, detailProduct } from './Components/Product/Data/data.js';
-import { auth } from "../src/Components/Firebase/firebase.utils.js";
+import { auth, createUserProfileDocument } from '../src/Components/Firebase/firebase.utils.js';
 const ProductContext = React.createContext();
 //context sits on top of all components
 //everytime you set create context, it comes with two things;
@@ -28,16 +28,33 @@ class ProductProvider extends Component {
 		//set products to their initial state
 		this.setProducts();
 		// set the currentusers state as signed in user with google
-		this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-			this.setState({
-				currentUser: user
-			});
-			console.log(user)
-		})
+		//userAuth comes from firebase
+		this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+			//if userAuth exists(have any value besides null)
+			if (userAuth) {
+				//userRef is waiting for the function we created in firebase utils that created a snapshot, which takes userAuth as value
+				const userRef = await createUserProfileDocument(userAuth);
+
+
+				userRef.onSnapshot((snapShot) => {
+					this.setState({
+						currentUser: {
+							id: snapShot.id,
+							...snapShot.data()
+						}
+					});
+				});
+			} else {
+				//if user logs out then state will be userAuth(if theres no userAuth then its null)
+				this.setState({
+					currentUser: userAuth
+				})
+			}
+		});
 	}
-	
+
 	//this is how user will sign out
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.unsubscribeFromAuth();
 	}
 
@@ -117,7 +134,7 @@ class ProductProvider extends Component {
 
 		this.setState(
 			() => {
-			 return	{cart: [ ...tempCart ]};
+				return { cart: [ ...tempCart ] };
 			},
 			() => {
 				this.addTotals();
@@ -139,7 +156,7 @@ class ProductProvider extends Component {
 
 		this.setState(
 			() => {
-				return {cart: [ ...tempCart ]} ;
+				return { cart: [ ...tempCart ] };
 			},
 			() => {
 				this.addTotals();
@@ -176,7 +193,7 @@ class ProductProvider extends Component {
 	clearCart = () => {
 		this.setState(
 			() => {
-				return {cart: []} ;
+				return { cart: [] };
 			},
 			() => {
 				this.setProducts();

@@ -14,13 +14,18 @@ const config = {
 
 firebase.initializeApp(config);
 
+//userAuth is coming from data that firebase stores.
+//additionalData is for other data we would need
 export const createUserProfileDocument = async(userAuth, additionalData) => {
+    //if theres no userAuth, exit from statement
     if (!userAuth) return;
 
     const userRef = firestore.doc(`users/${userAuth.uid}`);
 
+    //snapshot will check if user exists
     const snapShot = await userRef.get();
 
+    //this will create a new user in the database
     if (!snapShot.exists) {
         const { displayName, email } = userAuth;
         const createdAt = new Date();
