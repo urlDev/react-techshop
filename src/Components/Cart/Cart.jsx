@@ -14,9 +14,9 @@ class Cart extends Component {
 					const { cart } = value;
 					if (cart.length > 0) {
 						return (
-							<React.Fragment>
-								<div className="title">
-									<h1>Cart</h1>
+							<React.Fragment className="cart">
+								<div className="title mt-5">
+									<h1 className="cart-title text-danger"><span className="text-success">Your</span> Cart</h1>
 								</div>
 								<CartColumns />
 								<CartItems />

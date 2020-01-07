@@ -9,10 +9,10 @@ class CartTotal extends Component {
 			<ProductConsumer>
             {value => {
                 return (
-                    <Container>
+                    <Container className="cart-total">
                     <Row>
                         <Col >
-                            <h1 className="float-right">Cart Total: {value.cartTotal}$</h1>
+                            <h1 className="float-right text-success">Cart Total: {value.cartTotal}$</h1>
                         </Col>
                     </Row>
 					<Row>

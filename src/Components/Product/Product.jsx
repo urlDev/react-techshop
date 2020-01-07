@@ -26,10 +26,10 @@ class Product extends Component {
 							</Link>
 							<Card.Body>
 								<Card.Title>
-									<h2>{title}</h2>
+									<h2 className="text-info bold">{title}</h2>
 								</Card.Title>
 								<div>
-									<h3 className="float-left">{`${price}$`}</h3>
+									<h3 className="float-left text-success">{`${price}$`}</h3>
 									{/* if inCart(boolean value in data) is true, then make the button disabled*/}
 									<Button
 										className="float-right"

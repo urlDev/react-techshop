@@ -10,7 +10,7 @@ class CartItems extends Component {
 			<ProductConsumer>
 				{(value) => {
 					return (
-						<Container>
+						<Container className="cart-items mt-5">
 							{value.cart.map((i) => {
 								return (
 									<Row key={i.id}>
@@ -23,10 +23,10 @@ class CartItems extends Component {
 											/>
 										</Col>
 										<Col  xs={12} sm={2}>
-											<h3 className="text-capitalize">{i.title}</h3>
+											<h3 className="text-capitalize text-info">{i.title}</h3>
 										</Col>
 										<Col  xs={12} sm={2}>
-											<h3>{i.price}$</h3>
+											<h3 className="text-success">{i.price}$</h3>
 										</Col>
 										<Col  xs={12} sm={2}>
 											<h3>
@@ -51,7 +51,7 @@ class CartItems extends Component {
 										</Col>
 										<Col  xs={6} sm={2}>
                                             
-											<h3> <span className="d-block d-sm-none">Total:</span> {i.total}$</h3>
+											<h3 className="text-success"> <span className="d-block d-sm-none">Total:</span> {i.total}$</h3>
 										</Col>
 									</Row>
 								);

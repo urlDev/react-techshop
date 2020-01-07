@@ -1,23 +1,5 @@
-.cartWrap {
-    text-align: left;
-    .buttonCart {
-        float: right;
-    }
-    img {
-        width: 5em;
-    }
-    .text {
-        margin: 0;
-        padding: 0;
-        position: relative;
-        left: 50%;
-        transform: translate(-50%, 30%);
-        width: 1em;
-    }
-    .fa-angle-left {
-        margin-top: 1em;
-    }
-    .fa-angle-right {
-        margin-top: -0.6em;
+.cart {
+    &-title {
+        font-family: 'Julius Sans One', sans-serif;
     }
 }

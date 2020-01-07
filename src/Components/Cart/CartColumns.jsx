@@ -6,7 +6,7 @@ import "./CartColumns.scss";
 class CartColumns extends Component {
     render() {
         return (
-            <Container className="d-none d-sm-block">
+            <Container className="d-none d-sm-block columns text-primary mt-5">
                 <Row>
                     <Col sm={2}><h2>PRODUCTS</h2></Col>
                     <Col sm={2} ><h2>NAME OF PRODUCT</h2></Col>

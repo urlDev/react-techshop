@@ -13,7 +13,7 @@ class Details extends Component {
 					return (
 						<Container className="mt-5">
 							<Row>
-								<h1 className="display-1 m-auto pb-5">{title}</h1>
+								<h1 className="display-1 m-auto pb-5 text-primary">{title}</h1>
 							</Row>
 
 							<Row>
@@ -30,10 +30,10 @@ class Details extends Component {
 								</Col>
 
 								<Col className="details">
-									<h1 className="text-capitalize">Brand: {company}</h1>
-									<h3>Price: {price}$</h3>
-									<h3>Product Info:</h3>
-									<p>{info}</p>
+									<h1 className="text-capitalize text-danger">Brand: {company}</h1>
+									<h3 className="text-success">Price: {price}$</h3>
+									<h3 className="text-info">Product Info:</h3>
+									<p className="text-secondary">{info}</p>
 									<Col className="mt-5 p-0">
 										<Link to="/">
 											<Button variant="outline-primary" className="mr-5 p-2">

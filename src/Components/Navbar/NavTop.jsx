@@ -10,7 +10,7 @@ class NavTop extends Component {
 			<ProductConsumer>
 			{value => {
 				return (
-					<Navbar default collapseOnSelect expand="lg" bg="dark" variant="dark">
+					<Navbar default collapseOnSelect expand="lg" bg="dark" variant="dark" >
 					<Navbar.Brand as={Link} to="/">
 						<Image src={require('./logo_transparent.png')} />
 					</Navbar.Brand>
@@ -26,7 +26,7 @@ class NavTop extends Component {
 								Sign In
 							</Link>
 							<Link to="/cart" className="nav-link">
-								{value.cart.length >= 1 ? (<h3 className="text-primary shake"><i className="fas fa-cart-plus" /> {value.cartCountTotal}</h3>) : (<h3><i className="fas fa-cart-plus" /> {value.cartCountTotal}</h3>) }
+								{value.cart.length >= 1 ? (<h3 className="text-warning shake"><i className="fas fa-cart-plus" /> {value.cartCountTotal}</h3>) : (<h3><i className="fas fa-cart-plus" /> {value.cartCountTotal}</h3>) }
 							</Link>
 						</Nav>
 					</Navbar.Collapse>
