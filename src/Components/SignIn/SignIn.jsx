@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-
-import './SignIn.scss';
+import {signInWithGoogle} from "../Firebase/firebase.utils.js"
+import './SignIn.scss'; 
 
 class SignIn extends Component {
 	constructor(props) {
@@ -10,10 +10,12 @@ class SignIn extends Component {
 	}
 	render() {
 		return (
-			<Container>
+			<Container className="signin">
 				<Row>
-					<Col>
-						<Form>
+					<Col className="mt-5">
+						<h1>I already have an account</h1>
+						<h3>Sign in with your email and password</h3>
+						<Form className="mt-5">
 							<Form.Group controlId="formGroupEmail">
 								<Form.Label>Email address</Form.Label>
 								<Form.Control type="email" placeholder="Enter email" />
@@ -31,10 +33,21 @@ class SignIn extends Component {
 							>
 								LOGIN
 							</Button>
+							<Button
+									onClick={signInWithGoogle}
+									onAnimationEnd={this.animationEnd}
+									variant="outline-primary"
+									className={`${this.state.classNames} btn-lg button2 m-5`}
+									type="submit"
+								>
+									SIGN IN WITH GOOGLE
+								</Button>
 						</Form>
 					</Col>
-					<Col>
-						<Form>
+					<Col className="mt-5">
+						<h1>I don't have an account</h1>
+						<h3>Sign up with your email and password</h3>
+						<Form className="mt-5">
 							<Form.Group>
 								<Form.Label>First Name</Form.Label>
 								<Form.Control
@@ -66,25 +79,17 @@ class SignIn extends Component {
 								<Form.Label>Password</Form.Label>
 								<Form.Control type="password" placeholder="Password" />
 							</Form.Group>
-							<Col>
+							<Col className="p-0">
 								<Button
 									onClick={this.handleClick}
 									onAnimationEnd={this.animationEnd}
 									variant="outline-dark"
-									className={`${this.state.classNames} btn-lg button2 m-5`}
+									className={`${this.state.classNames} btn-lg button2 mt-5`}
 									type="submit"
 								>
 									SIGN UP
 								</Button>
-								<Button
-									onClick={this.handleClick}
-									onAnimationEnd={this.animationEnd}
-									variant="outline-primary"
-									className={`${this.state.classNames} btn-lg button2 m-5`}
-									type="submit"
-								>
-									SIGN UP WITH GOOGLE
-								</Button>
+								
 							</Col>
 						</Form>
 					</Col>

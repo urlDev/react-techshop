@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { storeProducts, detailProduct } from './Components/Product/Data/data.js';
-
+import { auth } from "../src/Components/Firebase/firebase.utils.js";
 const ProductContext = React.createContext();
 //context sits on top of all components
 //everytime you set create context, it comes with two things;
@@ -16,12 +16,29 @@ class ProductProvider extends Component {
 			detailProduct: detailProduct,
 			cart: [],
 			cartCountTotal: 0,
-			cartTotal: 0
+			cartTotal: 0,
+			currentUser: null
 		};
 	}
 
+	//we need this to sign out, currently user is not signed out
+	unsubscribeFromAuth = null;
+
 	componentDidMount() {
+		//set products to their initial state
 		this.setProducts();
+		// set the currentusers state as signed in user with google
+		this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+			this.setState({
+				currentUser: user
+			});
+			console.log(user)
+		})
+	}
+	
+	//this is how user will sign out
+	componentWillUnmount () {
+		this.unsubscribeFromAuth();
 	}
 
 	// with set products, we can iterate through the array and get each object.

@@ -1,8 +1,8 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-
 //https://dashboard.stripe.com/test/apikeys
 
+//we used cartTotal in CartTotal component and in context, thats why we put that here
 const StripeCheckoutButton = ({ cartTotal }) => {
     //this is because stripe wants to see the total in cents, thats why we multiply it by 100
     const priceForStripe = cartTotal * 100;
@@ -25,7 +25,7 @@ const StripeCheckoutButton = ({ cartTotal }) => {
 			billingAddress
 			shippingAddress
 			image={require("../Navbar/logo.png")}
-			description={`Your total is $${cartTotal}`}
+			description={`Your total is ${cartTotal}$`}
 			amount={priceForStripe}
 			panelLabel="Pay Now"
 			token={onToken}

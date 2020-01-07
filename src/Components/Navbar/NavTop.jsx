@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ProductConsumer } from '../../Context';
+import { auth } from "../Firebase/firebase.utils.js";
 import './NavTop.scss';
 
 class NavTop extends Component {
@@ -23,7 +24,8 @@ class NavTop extends Component {
 								Home
 							</Link>
 							<Link to="/signin" className="nav-link pr-5">
-								Sign In
+							{/* if currentUser has a user, it will return true. If its null(initial state) it will return false(null is falsy value) */}
+								{ value.currentUser ? <div onClick={() => auth.signOut()}>Sign Out</div> : <div>Sign In</div> }
 							</Link>
 							<Link to="/cart" className="nav-link">
 								{value.cart.length >= 1 ? (<h3 className="text-warning shake"><i className="fas fa-cart-plus" /> {value.cartCountTotal}</h3>) : (<h3><i className="fas fa-cart-plus" /> {value.cartCountTotal}</h3>) }
