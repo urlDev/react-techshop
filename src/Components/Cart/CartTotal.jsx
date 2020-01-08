@@ -13,7 +13,7 @@ class CartTotal extends Component {
 						<Container className="cart-total">
 							<Row>
 								<Col>
-									<h1 className="float-right text-success">Cart Total: {value.cartTotal}$</h1>
+									<h1 className="float-right text-success mt-3">Cart Total: {value.cartTotal}$</h1>
 								</Col>
 							</Row>
 							<Row>
@@ -32,7 +32,7 @@ class CartTotal extends Component {
 							</Row>
 							<Row>
 								<Col>
-									<h1 className="text-danger">
+									<h1 className="text-danger mt-5 mb-5">
 										*Please use the following test credit card for payments*
 										<br />
 										4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
