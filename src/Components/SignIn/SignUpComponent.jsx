@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Col, Button, Form } from 'react-bootstrap';
 import { auth, createUserProfileDocument } from '../Firebase/firebase.utils.js';
 
+import "./SignUpComponent.scss";
+
 class SignUpComponent extends Component {
 	constructor(props) {
 		super(props);
@@ -16,7 +18,7 @@ class SignUpComponent extends Component {
 	handleSubmit = async (e) => {
 		e.preventDefault();
 
-         const { firstName, lastName, email, password } = this.state;
+         const { firstName, email, password } = this.state;
 
 		try {
 			//user is what we create with email and password with creating user function, and giving it auth
@@ -46,8 +48,8 @@ class SignUpComponent extends Component {
 	render() {
 		const { firstName, lastName, email, password } = this.state;
 		return (
-			<Col className="mt-5">
-				<h1>I don't have an account</h1>
+			<Col className="mt-5 signUpComponent" sm={12} md={6}>
+				<h1 className="signUpTitle">I don't have an account</h1>
 				<h3>Sign up with your email and password</h3>
 				<Form className="mt-5" onSubmit={this.handleSubmit}>
 					<Form.Group>
@@ -99,8 +101,9 @@ class SignUpComponent extends Component {
 						<Button
 							onClick={this.handleClick}
 							variant="outline-dark"
-							className="mt-5 btn-lg"
+							className="mt-5 btn-lg p-3"
 							type="submit"
+							block
 						>
 							SIGN UP
 						</Button>

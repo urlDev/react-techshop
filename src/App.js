@@ -18,12 +18,14 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				{/* navbar is always on top */}
 				<NavTop />
 				<Switch>
 					<Route exact path="/" component={ShopItems} />
 					<Route path="/signin" component={SignIn} />
 					<Route path="/details" component={Details} />
 					<Route path="/cart" component={Cart} />
+					{/* 404 page */}
 					<Route component={Default} />
 				</Switch>
 			</div>

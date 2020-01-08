@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Col, Button, Form } from 'react-bootstrap';
 import { auth, signInWithGoogle } from '../Firebase/firebase.utils.js';
 
+import "./SignInComponent.scss";
+
 class SignInComponent extends Component {
 	constructor(props) {
 		super(props);
@@ -34,9 +36,9 @@ class SignInComponent extends Component {
 
 	render() {
 		return (
-			<Col className="mt-5">
-				<h1>I already have an account</h1>
-				<h3>Sign in with your email and password</h3>
+			<Col className="mt-5 signInComponent mb-5" sm={12} md={6}>
+				<h1 className="signInTitle">I already have an account</h1>
+				<h3 className="subtitle">Sign in with your email and password</h3>
 				<Form className="mt-5" onSubmit={this.handleSubmit}>
 					<Form.Group controlId="formGroupEmail">
 						<Form.Label>Email address</Form.Label>
@@ -61,14 +63,16 @@ class SignInComponent extends Component {
 							label="password"
 						/>
 					</Form.Group>
-					<Button variant="outline-dark" className="btn-lg" type="submit">
+					
+					<Button variant="outline-dark" className="btn-lg mt-5 p-3" type="submit" block>
 						LOGIN
 					</Button>
 					<Button
 						onClick={signInWithGoogle}
 						variant="outline-primary"
-						className="m-5 btn-lg"
+						className="mt-3 p-3 btn-lg"
 						type="submit"
+						block
 					>
 						SIGN IN WITH GOOGLE
 					</Button>

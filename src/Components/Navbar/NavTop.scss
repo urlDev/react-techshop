@@ -1,6 +1,5 @@
 $navbar-color: #F0F0F0;
 .navbar {
-    font-family: 'Roboto', sans-serif;
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
@@ -22,8 +21,13 @@ $navbar-color: #F0F0F0;
     }
 }
 
+.bg-dark {
+    background: rgb(48, 44, 68) !important;
+}
+
 .nav-link {
     color: $navbar-color !important;
+    font-family: 'Julius Sans One', sans-serif;
 }
 
 .shake {

@@ -1,0 +1,28 @@
+$sub-color: grey;
+$main-color: black;
+.signUpComponent {
+    .signUpTitle {
+        font-family: 'Julius Sans One', sans-serif;
+    }
+    .form-control {
+        background: none;
+        background-color: white;
+        color: $sub-color;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid $sub-color;
+        &:focus {
+            outline: none;
+        }
+        input[type='password'] {
+            letter-spacing: 0.3em;
+        }
+    }
+    .form-label {
+        color: #17a2b8;
+    }
+}

@@ -17,7 +17,7 @@ class Details extends Component {
 							</Row>
 
 							<Row>
-								<Col>
+								<Col sm={12} md={6}>
 									<Card>
 										<a href="#">
 											<Card.Img
@@ -29,12 +29,12 @@ class Details extends Component {
 									</Card>
 								</Col>
 
-								<Col className="details">
+								<Col className="details" sm={12} md={6}>
 									<h1 className="text-capitalize text-danger">Brand: {company}</h1>
 									<h3 className="text-success">Price: {price}$</h3>
 									<h3 className="text-info">Product Info:</h3>
 									<p className="text-secondary">{info}</p>
-									<Col className="mt-5 p-0">
+									<Col className="mt-5 mb-5 p-0">
 										<Link to="/">
 											<Button variant="outline-primary" className="mr-5 p-2">
 												Back To Products
@@ -53,7 +53,7 @@ class Details extends Component {
 												{inCart ? (
 													<h5 className="mb-0">In Cart</h5>
 												) : (
-													<h5 className="mb-0">Add To Cart</h5>
+													<h5 className="mb-0 ">Add To Cart</h5>
 												)}
 											</Button>
 									</Col>
