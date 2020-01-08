@@ -1,0 +1,114 @@
+import React, { Component } from 'react';
+import { Col, Button, Form } from 'react-bootstrap';
+import { auth, createUserProfileDocument } from '../Firebase/firebase.utils.js';
+
+class SignUpComponent extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			firstName: '',
+			lastName: '',
+			email: '',
+			password: ''
+		};
+	}
+
+	handleSubmit = async (e) => {
+		e.preventDefault();
+
+         const { firstName, lastName, email, password } = this.state;
+
+		try {
+			//user is what we create with email and password with creating user function, and giving it auth
+			const { user } = await auth.createUserWithEmailAndPassword(email, password);
+
+			//wait for function to create a user with firstName
+			await createUserProfileDocument(user, { firstName });
+
+			//once its done, set states to initial
+			this.setState({
+				firstName: '',
+				lastName: '',
+				email: '',
+				password: ''
+			});
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	handleChange = (e) => {
+		const { name, value } = e.target;
+
+		this.setState({ [name]: value });
+	};
+
+	render() {
+		const { firstName, lastName, email, password } = this.state;
+		return (
+			<Col className="mt-5">
+				<h1>I don't have an account</h1>
+				<h3>Sign up with your email and password</h3>
+				<Form className="mt-5" onSubmit={this.handleSubmit}>
+					<Form.Group>
+						<Form.Label>First Name</Form.Label>
+						<Form.Control
+							onChange={this.handleChange}
+							value={firstName}
+							name="firstName"
+							type="text"
+							placeholder="First name"
+							className="form-control"
+							required
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label>Last Name</Form.Label>
+						<Form.Control
+							onChange={this.handleChange}
+							value={lastName}
+							name="lastName"
+							type="text"
+							placeholder="Last name"
+							className="form-control"
+						/>
+					</Form.Group>
+					<Form.Group controlId="formGroupEmail">
+						<Form.Label>Email address</Form.Label>
+						<Form.Control
+							type="email"
+							placeholder="Enter email"
+							name="email"
+							value={email}
+							onChange={this.handleChange}
+							required
+						/>
+					</Form.Group>
+					<Form.Group controlId="formGroupPassword">
+						<Form.Label>Password</Form.Label>
+						<Form.Control
+							type="password"
+							placeholder="Password"
+							name="password"
+							value={password}
+							onChange={this.handleChange}
+							required
+						/>
+					</Form.Group>
+					<Col className="p-0">
+						<Button
+							onClick={this.handleClick}
+							variant="outline-dark"
+							className="mt-5 btn-lg"
+							type="submit"
+						>
+							SIGN UP
+						</Button>
+					</Col>
+				</Form>
+			</Col>
+		);
+	}
+}
+
+export default SignUpComponent;
