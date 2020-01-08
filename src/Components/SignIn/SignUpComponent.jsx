@@ -51,7 +51,7 @@ class SignUpComponent extends Component {
 			<Col className="mt-5 signUpComponent" sm={12} md={6}>
 				<h1 className="signUpTitle">I don't have an account</h1>
 				<h3>Sign up with your email and password</h3>
-				<Form className="mt-5" onSubmit={this.handleSubmit}>
+				<Form className="mt-5 mb-5" onSubmit={this.handleSubmit}>
 					<Form.Group>
 						<Form.Label>First Name</Form.Label>
 						<Form.Control
@@ -97,7 +97,7 @@ class SignUpComponent extends Component {
 							required
 						/>
 					</Form.Group>
-					<Col className="p-0">
+					<Col className="p-0 mb-5">
 						<Button
 							onClick={this.handleClick}
 							variant="outline-dark"

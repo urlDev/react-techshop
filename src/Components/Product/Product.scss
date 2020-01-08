@@ -20,5 +20,8 @@
                 transform: scale(1.5) rotate(-15deg);
             }
         }
+        &-body {
+            border-top: 1px solid rgb(48, 44, 68);
+        }
     }
 }
