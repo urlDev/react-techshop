@@ -1,19 +1,24 @@
 .vis {
     font-family: 'Roboto', sans-serif;
-    button:disabled {
-        background: #00264e;
-        border-color: #00264e;
+    .btn-primary {
+        background: rgb(48, 44, 68);
+        border-color: rgb(48, 44, 68);
     }
-}
-
-// overflow hidden will make the img scale up in hover but stay inside the card anchor container
-.card a {
-    overflow: hidden;
-}
-
-.card-img-top {
-    transition: all 0.7s ease-in-out;
-    &:hover {
-        transform: scale(1.5) rotate(-15deg);
+    button:disabled {
+        background: rgb(48, 44, 68);
+        border-color: rgb(48, 44, 68);
+    }
+    .card {
+        border: 1px solid rgb(48, 44, 68);
+        // overflow hidden will make the img scale up in hover but stay inside the card anchor container
+        & a {
+            overflow: hidden;
+        }
+        &-img-top {
+            transition: all 0.7s ease-in-out;
+            &:hover {
+                transform: scale(1.5) rotate(-15deg);
+            }
+        }
     }
 }

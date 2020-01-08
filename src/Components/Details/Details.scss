@@ -10,6 +10,14 @@
     p {
         font-size: 2em;
     }
+    .productsButton {
+        border-color: rgb(48, 44, 68);
+        color: rgb(48, 44, 68);
+        &:hover {
+            color: white;
+            background: rgb(48, 44, 68);
+        }
+    }
     button {
         height: 2em;
         font-size: 2em;
@@ -18,6 +26,10 @@
             font-size: 1em;
         }
     }
+}
+
+.imageCard {
+    border: 1px solid rgb(48, 44, 68) !important;
 }
 
 // @media (min-width: 768px) and (max-width:991.98px) {

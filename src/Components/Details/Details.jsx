@@ -18,7 +18,7 @@ class Details extends Component {
 
 							<Row>
 								<Col sm={12} md={6}>
-									<Card>
+									<Card className="imageCard">
 										<a href="#">
 											<Card.Img
 												variant="top"
@@ -36,7 +36,7 @@ class Details extends Component {
 									<p className="text-secondary">{info}</p>
 									<Col className="mt-5 mb-5 p-0">
 										<Link to="/">
-											<Button variant="outline-primary" className="mr-5 p-2">
+											<Button variant="outline-primary productsButton" className="mr-5 p-2">
 												Back To Products
 											</Button>
 										</Link>
