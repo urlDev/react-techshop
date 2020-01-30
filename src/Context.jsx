@@ -11,6 +11,8 @@ import {
   createUserProfileDocument
 } from "../src/Components/Firebase/firebase.utils.js";
 
+import { Persist } from 'react-persist'
+
 const ProductContext = React.createContext();
 //context sits on top of all components
 //everytime you set create context, it comes with two things;
@@ -238,6 +240,12 @@ class ProductProvider extends Component {
         }}
       >
         {this.props.children}
+        <Persist 
+          name="cart" 
+          data={this.state} 
+          debounce={500} 
+          onMount={data => this.setState(data)}
+        />
       </ProductContext.Provider>
     );
   }
