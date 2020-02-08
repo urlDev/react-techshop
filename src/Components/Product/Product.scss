@@ -9,7 +9,7 @@
         border-color: rgb(48, 44, 68);
     }
     .card {
-        border: 1px solid rgb(48, 44, 68);
+        border: none;
         // overflow hidden will make the img scale up in hover but stay inside the card anchor container
         & a {
             overflow: hidden;
@@ -21,7 +21,8 @@
             }
         }
         &-body {
-            border-top: 1px solid rgb(48, 44, 68);
+            background: rgba(48, 44, 68, 0.075);
+            border-bottom-left-radius: 20px;
         }
     }
 }
