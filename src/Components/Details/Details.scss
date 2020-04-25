@@ -1,6 +1,6 @@
 .details {
     text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     h1 {
         font-size: 3em;
     }
@@ -30,10 +30,5 @@
 
 .imageCard {
     border: 1px solid rgb(48, 44, 68) !important;
+    margin-bottom: 20px;
 }
-
-// @media (min-width: 768px) and (max-width:991.98px) {
-//     p {
-//         font-size: 1em
-//     }
-// }

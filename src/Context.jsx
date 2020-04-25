@@ -3,21 +3,17 @@
 import React, { Component } from "react";
 import {
   storeProducts,
-  detailProduct
+  detailProduct,
 } from "./Components/Product/Data/data.js";
 
 import {
   auth,
-  createUserProfileDocument
+  createUserProfileDocument,
 } from "../src/Components/Firebase/firebase.utils.js";
 
-import { Persist } from 'react-persist'
+import { Persist } from "react-persist";
 
 const ProductContext = React.createContext();
-//context sits on top of all components
-//everytime you set create context, it comes with two things;
-//Provider(providing state)
-//Consumer(consuming state)
 
 class ProductProvider extends Component {
   constructor(props) {
@@ -29,7 +25,7 @@ class ProductProvider extends Component {
       cart: [],
       cartCountTotal: 0,
       cartTotal: 0,
-      currentUser: null
+      currentUser: null,
     };
   }
 
@@ -39,40 +35,33 @@ class ProductProvider extends Component {
   componentDidMount() {
     //set products to their initial state
     this.setProducts();
-    // set the currentusers state as signed in user with google
-    //userAuth comes from firebase
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      //if userAuth exists(have any value besides null)
-      if (userAuth) {
-        //userRef is waiting for the function we created in firebase utils that created a snapshot, which takes userAuth as value
-        const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot(snapShot => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
           this.setState({
             currentUser: {
               id: snapShot.id,
-              ...snapShot.data()
-            }
+              ...snapShot.data(),
+            },
           });
         });
       } else {
-        //if user logs out then state will be userAuth(if theres no userAuth then its null)
         this.setState({
-          currentUser: userAuth
+          currentUser: userAuth,
         });
       }
     });
   }
 
-  //this is how user will sign out
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
 
-  // with set products, we can iterate through the array and get each object.
   setProducts = () => {
     let tempProducts = [];
-    storeProducts.forEach(item => {
+    storeProducts.forEach((item) => {
       const singleItem = { ...item };
       tempProducts = [...tempProducts, singleItem];
     });
@@ -80,29 +69,29 @@ class ProductProvider extends Component {
     // which means every object in data array will be there as well
     this.setState(() => {
       return {
-        products: tempProducts
+        products: tempProducts,
       };
     });
   };
 
   //get item will return product thats id matches with the id from products list(data)
-  getItem = id => {
-    const product = this.state.products.find(item => item.id === id);
+  getItem = (id) => {
+    const product = this.state.products.find((item) => item.id === id);
     return product;
   };
 
   // handeDetails will get item set it as product and then set the state of detailproduct as product.
   // getitem must have id
-  handleDetail = id => {
+  handleDetail = (id) => {
     const product = this.getItem(id);
     this.setState(() => {
       return {
-        detailProduct: product
+        detailProduct: product,
       };
     });
   };
 
-  addToCart = id => {
+  addToCart = (id) => {
     // tempProducts is all the products, we are copying it to work on
     let tempProducts = [...this.state.products];
     // we get the index of product that we got with getitem and set it index of tempProducts
@@ -123,7 +112,7 @@ class ProductProvider extends Component {
         return {
           products: tempProducts,
           // we are copying the state of cart and adding product we got above to it
-          cart: [...this.state.cart, product]
+          cart: [...this.state.cart, product],
         };
         // callback function to get state after we setstate
       },
@@ -133,10 +122,9 @@ class ProductProvider extends Component {
     );
   };
 
-  increment = id => {
-    console.log("my wife is sexier");
+  increment = (id) => {
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(i => i.id === id);
+    const selectedProduct = tempCart.find((i) => i.id === id);
 
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
@@ -153,10 +141,9 @@ class ProductProvider extends Component {
     );
   };
 
-  decrement = id => {
-    console.log("decrement");
+  decrement = (id) => {
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(i => i.id === id);
+    const selectedProduct = tempCart.find((i) => i.id === id);
 
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
@@ -175,24 +162,23 @@ class ProductProvider extends Component {
     );
   };
 
-  remove = id => {
+  remove = (id) => {
     let tempProducts = [...this.state.products];
     let tempCart = [...this.state.cart];
 
-    tempCart = tempCart.filter(i => i.id !== id);
+    tempCart = tempCart.filter((i) => i.id !== id);
 
     const index = tempProducts.indexOf(this.getItem(id));
     let removedProduct = tempProducts[index];
     removedProduct.inCart = false;
     removedProduct.count = 0;
     removedProduct.total = 0;
-    console.log("working");
 
     this.setState(
       () => {
         return {
           cart: [...tempCart],
-          products: [...tempProducts]
+          products: [...tempProducts],
         };
       },
       () => {
@@ -216,11 +202,11 @@ class ProductProvider extends Component {
   addTotals = () => {
     let cartTotal = 0;
     let cartCountTotal = 0;
-    this.state.cart.map(i => (cartTotal += i.total));
-    this.state.cart.map(i => (cartCountTotal += i.count));
+    this.state.cart.map((i) => (cartTotal += i.total));
+    this.state.cart.map((i) => (cartCountTotal += i.count));
     this.setState({
       cartTotal: cartTotal,
-      cartCountTotal: cartCountTotal
+      cartCountTotal: cartCountTotal,
     });
   };
 
@@ -236,15 +222,15 @@ class ProductProvider extends Component {
           increment: this.increment,
           decrement: this.decrement,
           remove: this.remove,
-          clearCart: this.clearCart
+          clearCart: this.clearCart,
         }}
       >
         {this.props.children}
-        <Persist 
-          name="cart" 
-          data={this.state} 
-          debounce={500} 
-          onMount={data => this.setState(data)}
+        <Persist
+          name="cart"
+          data={this.state}
+          debounce={500}
+          onMount={(data) => this.setState(data)}
         />
       </ProductContext.Provider>
     );
